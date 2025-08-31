@@ -21,15 +21,14 @@ player.Chatted:Connect(function(msg)
             gui:Destroy()
         end)
 
-        -- Commande spéciale : kill
-        if string.find(userText, "./kill") then
-            local targetName = string.match(userText, './kill%s+"(.-)"')
-            if targetName then
-                local target = game.Players:FindFirstChild(targetName)
-                if target and target.Character and target.Character:FindFirstChild("Humanoid") then
-                    target.Character.Humanoid.Health = 0
-                end
+        -- Commande spéciale : ./kill "NomDuJoueur"
+        local targetName = string.match(userText, './kill%s+"(.-)"')
+        if targetName then
+            local target = game.Players:FindFirstChild(targetName)
+            if target and target.Character and target.Character:FindFirstChild("Humanoid") then
+                target.Character.Humanoid.Health = 0
             end
         end
     end
 end)
+
